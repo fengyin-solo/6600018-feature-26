@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { Document, OCRResult, Annotation } from '../types'
+import type { Document, OCRResult, Annotation, ConvertResult, ConvertDetail } from '../types'
 
 export const useOcrStore = defineStore('ocr', () => {
   const documents = ref<Document[]>([])
@@ -78,8 +78,20 @@ export const useOcrStore = defineStore('ocr', () => {
     currentDoc.value.annotations = currentDoc.value.annotations.filter(a => a.id !== id)
   }
 
-  function convertVariant(text: string): string {
-    return text.split('').map(c => VARIANT_DICT[c] || c).join('')
+  function convertVariant(text: string): ConvertResult {
+    const details: ConvertDetail[] = text.split('').map(c => {
+      const converted = VARIANT_DICT[c] || c
+      return {
+        original: c,
+        converted,
+        isConverted: c !== converted
+      }
+    })
+    return {
+      text: details.map(d => d.converted).join(''),
+      details,
+      hasVariants: details.some(d => d.isConverted)
+    }
   }
 
   function searchInDocuments(query: string) {

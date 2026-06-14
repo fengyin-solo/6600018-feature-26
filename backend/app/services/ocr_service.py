@@ -42,3 +42,20 @@ def run_ocr(image_bytes: bytes, filename: str) -> List[Dict[str, Any]]:
 def convert_variants(text: str) -> str:
     """Convert ancient/variant characters to modern simplified."""
     return "".join(VARIANT_DICT.get(c, c) for c in text)
+
+
+def convert_variants_with_detail(text: str) -> dict:
+    """Convert variant characters and return detailed conversion info."""
+    details = []
+    for c in text:
+        converted = VARIANT_DICT.get(c, c)
+        details.append({
+            "original": c,
+            "converted": converted,
+            "is_converted": c != converted
+        })
+    return {
+        "text": "".join(d["converted"] for d in details),
+        "details": details,
+        "has_variants": any(d["is_converted"] for d in details)
+    }

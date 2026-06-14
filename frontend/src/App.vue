@@ -64,7 +64,18 @@
             </span>
           </div>
           <div class="text-xs text-gray-400 mt-1">
-            简体: {{ store.convertVariant(r.text) }}
+            简体:
+            <span v-for="(d, i) in store.convertVariant(r.text).details" :key="i"
+              :class="d.isConverted ? 'text-amber-400 font-medium cursor-help' : ''"
+              :title="d.isConverted ? `异体字: ${d.original} → ${d.converted}` : ''">
+              {{ d.converted }}
+            </span>
+          </div>
+          <div v-if="store.convertVariant(r.text).hasVariants" class="text-xs text-amber-500/70 mt-0.5">
+            <span class="inline-flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              含异体字转换，悬停查看来源
+            </span>
           </div>
           <input v-model="r.corrected" placeholder="人工校正..."
             class="w-full bg-gray-700 rounded px-2 py-1 text-xs mt-1" />

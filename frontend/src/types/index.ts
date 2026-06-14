@@ -28,3 +28,15 @@ export interface VariantChar {
   modern: string
   frequency: number
 }
+
+export interface ConvertDetail {
+  original: string
+  converted: string
+  isConverted: boolean
+}
+
+export interface ConvertResult {
+  text: string
+  details: ConvertDetail[]
+  hasVariants: boolean
+}
