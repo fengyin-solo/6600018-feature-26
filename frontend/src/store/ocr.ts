@@ -16,12 +16,12 @@ export const useOcrStore = defineStore('ocr', () => {
     imageUrl: '',
     results: [
       { id: 'r1', text: '子曰', bbox: [50, 30, 80, 40], confidence: 0.95 },
-      { id: 'r2', text: '学而', bbox: [50, 80, 80, 40], confidence: 0.88 },
-      { id: 'r3', text: '时习之', bbox: [50, 130, 120, 40], confidence: 0.91 },
-      { id: 'r4', text: '不亦说乎', bbox: [50, 180, 160, 40], confidence: 0.87 },
-      { id: 'r5', text: '有朋', bbox: [200, 30, 80, 40], confidence: 0.93 },
-      { id: 'r6', text: '自远方来', bbox: [200, 80, 160, 40], confidence: 0.85 },
-      { id: 'r7', text: '不亦乐乎', bbox: [200, 130, 160, 40], confidence: 0.92 },
+      { id: 'r2', text: '學而時習之', bbox: [50, 80, 200, 40], confidence: 0.88 },
+      { id: 'r3', text: '不亦説乎', bbox: [50, 130, 160, 40], confidence: 0.91 },
+      { id: 'r4', text: '有朋自遠方來', bbox: [50, 180, 240, 40], confidence: 0.87 },
+      { id: 'r5', text: '不亦樂乎', bbox: [50, 230, 160, 40], confidence: 0.93 },
+      { id: 'r6', text: '人不知而不慍', bbox: [50, 280, 240, 40], confidence: 0.86 },
+      { id: 'r7', text: '不亦君子乎', bbox: [50, 330, 200, 40], confidence: 0.90 },
     ],
     annotations: [],
     createdAt: '2025-01-15'
@@ -31,6 +31,7 @@ export const useOcrStore = defineStore('ocr', () => {
     '説': '说', '學': '学', '習': '习', '遠': '远', '樂': '乐', '書': '书',
     '國': '国', '東': '东', '長': '长', '門': '门', '馬': '马', '鳥': '鸟',
     '風': '风', '雲': '云', '龍': '龙', '車': '车', '萬': '万', '見': '见',
+    '時': '时', '來': '来', '慍': '愠',
   }
 
   function loadMockDocument() {

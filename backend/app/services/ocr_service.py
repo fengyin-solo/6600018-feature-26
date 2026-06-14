@@ -7,6 +7,7 @@ from typing import List, Dict, Any
 VARIANT_DICT: Dict[str, str] = {
     '説': '说', '學': '学', '習': '习', '遠': '远', '樂': '乐',
     '書': '书', '國': '国', '東': '东', '長': '长', '門': '门',
+    '時': '时', '來': '来', '慍': '愠',
 }
 
 # Mock OCR results for demonstration
@@ -16,6 +17,8 @@ MOCK_RESULTS: List[Dict[str, Any]] = [
     {"id": "r3", "text": "不亦説乎", "bbox": [50, 130, 160, 40], "confidence": 0.91},
     {"id": "r4", "text": "有朋自遠方來", "bbox": [50, 180, 240, 40], "confidence": 0.87},
     {"id": "r5", "text": "不亦樂乎", "bbox": [50, 230, 160, 40], "confidence": 0.93},
+    {"id": "r6", "text": "人不知而不慍", "bbox": [50, 280, 240, 40], "confidence": 0.86},
+    {"id": "r7", "text": "不亦君子乎", "bbox": [50, 330, 200, 40], "confidence": 0.90},
 ]
 
 
